@@ -1,0 +1,46 @@
+{% load static%}
+
+
+{% block css%}
+
+    <link rel='stylesheet' href={% static 'css/update.css'%}>
+{% endblock%}
+
+
+
+
+
+
+{% block content%}
+
+<form method='POST' action=''>
+{% csrf_token%}
+
+<h1>UPDATING.....</h1>
+
+<div class='text'>
+<input type='text' name='task' value={{ task.title }} id='title'>
+
+<input type='checkbox' name='complete' class='complete'   {% if task.complete %} checked{% endif%}><br>
+</div>
+<div class='button'>
+            <div>
+                
+                
+                <button ><a href= {% url 'list'%}>CANCEL  </a></button> 
+
+            </div>
+
+            <div>
+                
+                <button >SUBMIT</button>     
+                
+                
+            </div>
+                    
+</div>
+
+</form>
+
+
+{% endblock%}

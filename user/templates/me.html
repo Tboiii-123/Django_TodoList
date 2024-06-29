@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% load static%}
+
+
+{% block css%}
+<link  href={% static "css/list.css"%} rel="stylesheet">
+{% endblock%}
+
+
+
+{% block content%}
+
+<h2>
+    Django TodoList
+
+</h2>
+
+<div class="container">
+        
+
+    <div class="todoapp">
+        <div class="row">
+
+<form  method="POST" action=''>
+ {% csrf_token %}
+ <div>
+
+ <input type="text" name='task' id="input-box" placeholder="Add your Task" >
+ </div>
+
+    <div>
+    
+ <input type="submit" class='button'>
+    </div>
+        
+</div>
+        
+</form>
+
+
+
+{% for i in task %}
+
+<div>
+    {% if i.complete == True%}
+        
+                
+                    <strike>
+                        
+                        <li>{{i}}</li> 
+                    
+                    </strike>
+               
+                 
+                        <button id='delup1' ><a href={% url 'delete' i.id%} >Delete</a></button>
+                   
+                   
+                        <button id='delup2' ><a href={% url 'update' i.id%}> Update </a> </button>
+                    
+            
+    {% else%}
+   
+  
+            
+                    <li>{{i}}</li> 
+                
+            
+            
+  
+    {% endif%}        
+    <div>
+
+
+</div>
+</div>
+
+
+
+{% endfor%}
+
+{% endblock%}
